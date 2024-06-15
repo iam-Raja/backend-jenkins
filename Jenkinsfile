@@ -21,7 +21,7 @@ pipeline {
                 }
             }
         }
-        stage('install dependices')
+        stage('install dependices'){
         steps{
             sh """
                npm install
@@ -31,6 +31,7 @@ pipeline {
 
         }
        
+    }
     }
     post { 
         always { 
