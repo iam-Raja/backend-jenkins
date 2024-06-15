@@ -25,7 +25,6 @@ pipeline {
         steps{
             sh """
                npm install
-               ls -lrt
                echo "appversion:$appversion"
             """
         } 
