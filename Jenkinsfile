@@ -28,10 +28,15 @@ pipeline {
                ls -lrt
                echo "appversion:$appversion"
             """
-
-        }
-       
-    }
+        } 
+       }
+       stage('Zipping file')
+       steps{
+        sh """
+         zip -r backend-${appversion}.zip * -x Jenkinsfile -x backend-${appversion}.zip
+         ls -lrt
+        """
+       }
     }
     post { 
         always { 
