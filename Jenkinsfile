@@ -50,14 +50,14 @@ pipeline {
                         repository: "backend",
                         credentialsId: 'nexus',
                         artifacts: [
-                            [artifactId: backend,
+                            [artifactId: "backend",
                             classifier: '',
                             file: 'backend-' + ${appversion} + '.zip',
                             type: 'zip']
-        ]
-     )
+                        ]
+                    )
+                }
             }
-        }
        }
     }
     post { 
