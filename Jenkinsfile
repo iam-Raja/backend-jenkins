@@ -9,7 +9,7 @@ pipeline {
     }
     environment{
         def appversion= ''
-        def nexusUrl='3.90.81.75:8081'
+        nexusUrl='3.90.81.75:8081' 
     }
     
     stages {
@@ -52,7 +52,7 @@ pipeline {
                         artifacts: [
                             [artifactId: "backend",
                             classifier: '',
-                            file: 'backend-' + ${appversion} + '.zip',
+                            file: "backend-" + "${appversion}" + '.zip',
                             type: 'zip']
                         ]
                     )
