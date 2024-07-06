@@ -59,6 +59,17 @@ pipeline {
                 }
             }
        }
+       stage('backned-deploy'){
+        steps{
+           script{
+                def params= [
+                    string(name: 'appVersion' , value:"${appversion}")
+                ]
+                build job: 'backned-deploy' , parameters: params, wait:false
+
+           }
+        }
+       }
     }
     post { 
         always { 
