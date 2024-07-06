@@ -63,7 +63,7 @@ pipeline {
         steps{
            script{
                 def params= [
-                    string(name: 'appVersion' , value:"${appversion}")
+                    string(name: 'appVersion' , value: "${appversion}")
                 ]
                 build job: 'backned-deploy' , parameters: params, wait:false
 
