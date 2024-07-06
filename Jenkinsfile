@@ -59,13 +59,13 @@ pipeline {
                 }
             }
        }
-       stage('backned-deploy'){
+       stage('backendd-deploy'){
         steps{
            script{
                 def params= [
                     string(name: 'appVersion' , value: "${appversion}")
                 ]
-                build job: 'backned-deploy' , parameters: params, wait:false
+                build job: 'backend-deploy' , parameters: params, wait:false
 
            }
         }
