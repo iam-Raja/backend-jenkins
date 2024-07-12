@@ -9,7 +9,7 @@ pipeline {
     }
     environment{
         def appversion= ''
-        nexusUrl='3.90.81.75:8081' 
+        nexusUrl='3.90.81.75:8081'
     }
     
     stages {
