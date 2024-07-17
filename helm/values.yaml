@@ -1,0 +1,4 @@
+deployment:
+ replicas: 2
+ imageversion: IMAGE_VERSION #This is called placeHolder
+

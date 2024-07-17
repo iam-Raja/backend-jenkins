@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  # these labels belongs to replicaset resource
+  #namespace: expense
+  labels:
+    tier: app
+    component: backend
+    project: expense
+spec:
+  # modify replicas according to your case
+  replicas: {{ .Values.deployment.replicas }}
+  selector:
+    matchLabels:
+      tier: app
+      component: backend
+      project: expense
+  # below is pod definition    
+  template:
+    metadata:
+    # these labels belongs to pod
+      labels:
+        tier: app
+        component: backend
+        project: expense
+    spec:
+      containers:
+      - name: nginx
+        image: {{ .Values.deployment.imageversion }} #Update the ecr (<Account-id>.dkr.ecr.<regin-name>.amazonaws.com/expense-backend)
+        envFrom:
+        - configMapRef:
+           name: backend
