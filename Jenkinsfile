@@ -9,7 +9,9 @@ pipeline {
     }
     environment{
         def appversion= ''
-        nexusUrl='3.90.81.75:8081'
+        //nexusUrl='3.90.81.75:8081'
+        account_id='533267192490'
+        region='us-east-1'
     }
     
     stages {
@@ -38,7 +40,18 @@ pipeline {
         """
        }
        }
-       stage('nexus-uploader'){
+
+       stage('Docker Build'){
+        steps{
+            sh """
+            aws ecr get-login-password --region ${region} | docker login --username AWS --password-stdin ${account_id}.dkr.ecr.${region}.amazonaws.com
+            docker build -t ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-backend:${appversion} .
+            docker push ${account_id}.dkr.ecr.${region}.amazonaws.com/expense-backend:${appversion}
+
+            """
+        }
+       }
+    /*    stage('nexus-uploader'){
         steps{
             script{
                     nexusArtifactUploader(
@@ -70,7 +83,7 @@ pipeline {
            }
         }
        }
-    }
+    } */
     post { 
         always { 
             echo 'I will always say Hello again!'
